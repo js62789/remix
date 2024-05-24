@@ -3,15 +3,15 @@ import {
   Meta,
   Outlet,
   Scripts,
-} from "@remix-run/react";
+} from '@remix-run/react';
 
 export default function App() {
-    return (
+  return (
     <html>
       <head>
         <link
-          rel="icon"
           href="data:image/x-icon;base64,AA"
+          rel="icon"
         />
         <Meta />
         <Links />
