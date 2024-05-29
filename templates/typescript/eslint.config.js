@@ -2,11 +2,13 @@ import reactRecommended from 'eslint-plugin-react/configs/recommended.js';
 import reactRuntime from 'eslint-plugin-react/configs/jsx-runtime.js';
 import stylistic from '@stylistic/eslint-plugin';
 import js from '@eslint/js';
+import ts from 'typescript-eslint';
 import globals from 'globals';
 
 /** @type { import('eslint').Linter.FlatConfig[] } */
 export default [
   js.configs.recommended,
+  ...ts.configs.recommended,
   reactRecommended,
   reactRuntime,
   {
