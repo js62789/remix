@@ -8,7 +8,7 @@
     "lint": "concurrently -k \"npm:lint:*\"",
     "lint:css": "stylelint \"**/*.css\"",
     "lint:js": "eslint --ignore-pattern 'build' --ignore-pattern 'public/build' .",
-    "lint:ts": "tsc",
+    "lint:ts": "tsc -p tsconfig.json",
     "prepare": "husky",
     "start": "remix-serve build/server/index.js"
   },
@@ -26,6 +26,7 @@
     "lint-staged": "^15.2.5",
     "stylelint": "^16.6.1",
     "stylelint-config-standard": "^36.0.0",
+    "tsc-files": "^1.1.4",
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.11.0",
     "vite": "^5.2.11"

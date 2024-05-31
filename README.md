@@ -2,6 +2,8 @@
 
 ## Creating a new Remix app
 
-`npx create-remix@latest packages/test-app --template templates/typescript`
+`npx create-remix@latest packages/test-app --template js62789/remix/templates/typescript`
+
 or
-`npm create remix@latest packages/test-app --template templates/typescript`
+
+`npm create remix@latest packages/test-app --template js62789/remix/templates/typescript`
