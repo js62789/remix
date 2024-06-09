@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "remix vite:build",
-    "dev": "remix dev",
+    "dev": "remix vite:dev",
     "lint": "concurrently -k \"npm:lint:*\"",
     "lint:css": "stylelint \"**/*.css\"",
     "lint:js": "eslint --ignore-pattern 'build' --ignore-pattern 'public/build' .",
