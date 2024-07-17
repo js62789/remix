@@ -4,13 +4,13 @@
   "type": "module",
   "scripts": {
     "build": "remix vite:build",
-    "dev": "remix vite:dev",
+    "dev": "node server.js",
     "lint": "concurrently -k \"npm:lint:*\"",
     "lint:css": "stylelint \"**/*.css\"",
     "lint:js": "eslint --ignore-pattern 'build' --ignore-pattern 'public/build' .",
     "lint:ts": "tsc -p tsconfig.json",
     "prepare": "husky",
-    "start": "remix-serve build/server/index.js",
+    "start": "node server.js",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "@remix-run/css-bundle": "^2.9.2",
+    "@remix-run/express": "^2.10.3",
     "@remix-run/node": "^2.9.2",
     "@remix-run/react": "^2.9.2",
     "@remix-run/serve": "^2.9.2",
