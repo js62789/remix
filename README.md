@@ -7,7 +7,6 @@
 - Typescript
 - NPM
 - CSS Modules
-# js62789's Remix Utilities
 
 ## Creating a new Remix app
 
