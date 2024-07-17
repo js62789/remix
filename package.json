@@ -4,6 +4,8 @@
   "type": "module",
   "scripts": {
     "build": "remix vite:build",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio",
     "dev": "remix vite:dev",
     "lint": "concurrently -k \"npm:lint:*\"",
     "lint:css": "stylelint \"**/*.css\"",
@@ -36,6 +38,7 @@
     "globals": "^15.3.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.5",
+    "prisma": "^5.15.0",
     "storybook": "^8.1.6",
     "stylelint": "^16.6.1",
     "stylelint-config-standard": "^36.0.0",
