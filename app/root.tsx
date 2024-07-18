@@ -6,8 +6,8 @@ import {
   ScrollRestoration,
 } from '@remix-run/react';
 import { cssBundleHref } from '@remix-run/css-bundle';
-import './root.css';
 import type { LinksFunction, MetaFunction } from '@remix-run/node';
+import './root.css';
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
