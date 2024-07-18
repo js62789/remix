@@ -3,6 +3,7 @@ import {
   Meta,
   Outlet,
   Scripts,
+  ScrollRestoration,
 } from '@remix-run/react';
 import { cssBundleHref } from '@remix-run/css-bundle';
 import './root.css';
@@ -14,19 +15,17 @@ export const links: LinksFunction = () => [
 
 export default function App() {
   return (
-    <html>
+    <html lang="en">
       <head>
-        <link
-          href="data:image/x-icon;base64,AA"
-          rel="icon"
-        />
+        <meta charSet="utf-8" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
         <Meta />
         <Links />
       </head>
       <body>
         <h1>Hello world!</h1>
         <Outlet />
-
+        <ScrollRestoration />
         <Scripts />
       </body>
     </html>
