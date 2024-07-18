@@ -5,4 +5,7 @@ const isStorybook = process.argv[1]?.includes('storybook');
 
 export default defineConfig({
   plugins: [!isStorybook && remix()],
+  server: {
+    port: 3000,
+  },
 });

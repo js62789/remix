@@ -6,7 +6,7 @@ import {
   ScrollRestoration,
 } from '@remix-run/react';
 import { cssBundleHref } from '@remix-run/css-bundle';
-import type { LinksFunction } from '@remix-run/node';
+import type { LinksFunction, MetaFunction } from '@remix-run/node';
 import { useEffect, useState, type ReactNode } from 'react';
 import type { Socket } from 'socket.io-client';
 import io from 'socket.io-client';
@@ -17,6 +17,12 @@ import './root.css';
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
 ];
+
+export const meta: MetaFunction = () => ([
+  {
+    title: 'My Remix App',
+  },
+]);
 
 export function Layout({ children }: { children: ReactNode }) {
   return (
