@@ -1,5 +1,0 @@
-{
-  "*.{js,jsx,ts,tsx}": ["npm run lint:js"],
-  "*.{ts,tsx}": ["tsc-files"],
-  "*.css": ["npm run lint:css"]
-}

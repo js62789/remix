@@ -17,6 +17,10 @@ export const meta: MetaFunction = () => ([
   {
     title: 'My Remix App',
   },
+  {
+    name: 'description',
+    content: 'This app is the best',
+  },
 ]);
 
 export default function App() {
@@ -29,7 +33,6 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <h1>Hello world!</h1>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
