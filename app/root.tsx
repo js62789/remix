@@ -22,6 +22,10 @@ export const meta: MetaFunction = () => ([
   {
     title: 'My Remix App',
   },
+  {
+    name: 'description',
+    content: 'This app is the best',
+  },
 ]);
 
 export function Layout({ children }: { children: ReactNode }) {
@@ -34,9 +38,7 @@ export function Layout({ children }: { children: ReactNode }) {
         <Links />
       </head>
       <body>
-        <h1>Hello world!</h1>
         {children}
-
         <ScrollRestoration />
         <Scripts />
       </body>
