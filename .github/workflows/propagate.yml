@@ -1,0 +1,59 @@
+name: Propagate Changes
+on:
+  push:
+    branches:
+      - typescript
+      - express
+      - fastify
+
+permissions:
+  pull-requests: write
+
+jobs:
+  propagate-typescript:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/typescript'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: propagate to express
+        run: gh pr create -B express -H typescript --title 'Merge typescript into express' --body 'Created by Github action'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: propagate to fastify
+        run: gh pr create -B fastify -H typescript --title 'Merge typescript into fastify' --body 'Created by Github action'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: propagate to sessions
+        run: gh pr create -B sessions -H typescript --title 'Merge typescript into sessions' --body 'Created by Github action'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: propagate to prisma
+        run: gh pr create -B prisma -H typescript --title 'Merge typescript into prisma' --body 'Created by Github action'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  propagate-express:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/express'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: propagate to express-socket
+        run: gh pr create -B express-socket -H express --title 'Merge express into express-socket' --body 'Created by Github action'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  propagate-fastify:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/fastify'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: propagate to fastify-socket
+        run: gh pr create -B fastify-socket -H fastify --title 'Merge fastify into fastify-socket' --body 'Created by Github action'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
