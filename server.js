@@ -4,6 +4,7 @@ import Fastify from 'fastify';
 import fastifyStatic from '@fastify/static';
 import fastifyCompress from '@fastify/compress';
 import { createRequestHandler } from '@mcansh/remix-fastify';
+import { Server } from 'socket.io';
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
@@ -27,6 +28,29 @@ const fastify = Fastify({
 });
 
 fastify.register(fastifyCompress);
+
+// Attach the socket.io server to the HTTP server
+fastify.decorate('io', new Server(fastify.server));
+
+// Close the socket server when the fastify instance is closed
+fastify.addHook('onClose', (fastify, done) => {
+  fastify.io.close();
+  done();
+});
+
+// Then you can use `io` to listen the `connection` event and get a socket
+// from a client
+fastify.io.on('connection', (socket) => {
+  // from this point you are on the WS connection with a specific client
+  console.log(socket.id, 'connected');
+
+  socket.emit('confirmation', 'connected!');
+
+  socket.on('event', (data) => {
+    console.log(socket.id, data);
+    socket.emit('event', 'pong');
+  });
+});
 
 if (viteDevServer) {
   let middie = await import('@fastify/middie').then((mod) => mod.default);
