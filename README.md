@@ -8,6 +8,7 @@ Each one of these branches represents a Remix template. Use any one of these bra
 - express
 - express-socket
 - fastify
+- fastify-socket
 - prisma
 - sessions
 
