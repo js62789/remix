@@ -1,16 +1,28 @@
 import {
   isRouteErrorResponse,
+  json,
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
   useRouteError,
 } from '@remix-run/react';
 import { cssBundleHref } from '@remix-run/css-bundle';
-import type { LinksFunction, MetaFunction } from '@remix-run/node';
+import type { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
 import { type ReactNode } from 'react';
+import { useChangeLanguage } from 'remix-i18next/react';
 import './root.css';
+import i18next from './i18n/i18next.server';
+
+export const handle = {
+  // In the handle export, we can add a i18n key with namespaces our route
+  // will need to load. This key can be a single string or an array of strings.
+  // TIP: In most cases, you should set this to your defaultNS from your i18n config
+  // or if you did not set one, set it to the i18next default namespace "translation"
+  i18n: 'common',
+};
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
@@ -25,6 +37,12 @@ export const meta: MetaFunction = () => ([
     content: 'This app is the best',
   },
 ]);
+
+export async function loader({ request }: LoaderFunctionArgs) {
+  return json({
+    locale: await i18next.getLocale(request),
+  });
+}
 
 // The Layout will render even if an error was caught by an error boundary,
 // so make sure nothing can break in here
@@ -53,7 +71,7 @@ export function ErrorBoundary() {
     return (
       <div>
         <h1>
-          {error.status} 
+          {error.status}
           {' '}
           {error.statusText}
         </h1>
@@ -81,6 +99,10 @@ export function ErrorBoundary() {
 }
 
 export default function App() {
+  const { locale } = useLoaderData<typeof loader>();
+
+  useChangeLanguage(locale);
+
   return (
     <Outlet />
   );
