@@ -5,6 +5,7 @@ This repository hosts a series of branches that serve the purpose of being a Rem
 ## Available templates
 Each one of these branches represents a Remix template. Use any one of these branch names to generate a new application.
 - typescript
+- i18next
 - express
 - express-socket
 - fastify
