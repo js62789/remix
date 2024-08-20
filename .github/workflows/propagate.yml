@@ -21,6 +21,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: propagate to i18next
+        run: gh pr create -B i18next -H typescript --title 'Merge typescript into i18next' --body 'Created by Github action'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: propagate to fastify
         run: gh pr create -B fastify -H typescript --title 'Merge typescript into fastify' --body 'Created by Github action'
         env:
