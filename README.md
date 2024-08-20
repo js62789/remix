@@ -1,4 +1,4 @@
-# js62789's Remix Utilities
+# js62789's Remix Templates
 
 This repository hosts a series of branches that serve the purpose of being a Remix template. I chose to store these templates in branches instead of directories to make updates more DRY, while having the added benefit of testing root-level integrations like Husky and VSCode settings.
 
