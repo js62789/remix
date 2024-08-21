@@ -3,6 +3,7 @@ import url from 'url';
 import Fastify from 'fastify';
 import fastifyStatic from '@fastify/static';
 import fastifyCompress from '@fastify/compress';
+import fastifyHelmet from '@fastify/helmet';
 import { createRequestHandler } from '@mcansh/remix-fastify';
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
@@ -27,6 +28,8 @@ const fastify = Fastify({
 });
 
 fastify.register(fastifyCompress);
+
+fastify.register(fastifyHelmet, { contentSecurityPolicy: false });
 
 if (viteDevServer) {
   let middie = await import('@fastify/middie').then((mod) => mod.default);
