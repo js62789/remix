@@ -3,6 +3,7 @@ import { createServer } from 'http';
 import { createRequestHandler } from '@remix-run/express';
 import compression from 'compression';
 import express from 'express';
+import helmet from 'helmet';
 import morgan from 'morgan';
 import { Server } from 'socket.io';
 
@@ -44,6 +45,8 @@ io.on('connection', (socket) => {
 });
 
 app.use(compression());
+
+app.use(helmet({ contentSecurityPolicy: false }));
 
 // http://expressjs.com/en/advanced/best-practice-security.html#at-a-minimum-disable-x-powered-by-header
 app.disable('x-powered-by');
