@@ -3,6 +3,7 @@ import url from 'url';
 import Fastify from 'fastify';
 import fastifyStatic from '@fastify/static';
 import fastifyCompress from '@fastify/compress';
+import fastifyHelmet from '@fastify/helmet';
 import { createRequestHandler } from '@mcansh/remix-fastify';
 import { Server } from 'socket.io';
 
@@ -28,6 +29,8 @@ const fastify = Fastify({
 });
 
 fastify.register(fastifyCompress);
+
+fastify.register(fastifyHelmet, { contentSecurityPolicy: false });
 
 // Attach the socket.io server to the HTTP server
 fastify.decorate('io', new Server(fastify.server));
