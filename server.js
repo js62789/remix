@@ -1,6 +1,7 @@
 import { createRequestHandler } from '@remix-run/express';
 import compression from 'compression';
 import express from 'express';
+import helmet from 'helmet';
 import morgan from 'morgan';
 
 const viteDevServer =
@@ -21,6 +22,8 @@ const remixHandler = createRequestHandler({
 const app = express();
 
 app.use(compression());
+
+app.use(helmet({ contentSecurityPolicy: false }));
 
 // http://expressjs.com/en/advanced/best-practice-security.html#at-a-minimum-disable-x-powered-by-header
 app.disable('x-powered-by');
