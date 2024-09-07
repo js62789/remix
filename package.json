@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "remix vite:build",
-    "dev": "npm run dev:server && npm run dev:css",
+    "dev": "concurrently -k \"npm:dev:*\"",
     "dev:server": "remix vite:dev",
     "dev:css": "tcm --watch ./app",
     "clinic:doctor": "npm run build && npx clinic doctor --autocannon / --method GET -- node ./node_modules/.bin/remix-serve build/server/index.js",
