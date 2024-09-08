@@ -4,6 +4,9 @@ import stylistic from '@stylistic/eslint-plugin';
 import js from '@eslint/js';
 import ts from 'typescript-eslint';
 import globals from 'globals';
+import { FlatCompat } from '@eslint/eslintrc';
+
+const compat = new FlatCompat();
 
 /** @type { import('eslint').Linter.FlatConfig[] } */
 export default [
@@ -11,6 +14,9 @@ export default [
   ...ts.configs.recommended,
   reactRecommended,
   reactRuntime,
+  ...compat.config({
+    extends: ['plugin:react-hooks/recommended'],
+  }),
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
