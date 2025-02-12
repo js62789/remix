@@ -1,5 +1,6 @@
 import reactRecommended from 'eslint-plugin-react/configs/recommended.js';
 import reactRuntime from 'eslint-plugin-react/configs/jsx-runtime.js';
+import storybook from 'eslint-plugin-storybook';
 import stylistic from '@stylistic/eslint-plugin';
 import js from '@eslint/js';
 import ts from 'typescript-eslint';
@@ -14,6 +15,7 @@ export default [
   ...ts.configs.recommended,
   reactRecommended,
   reactRuntime,
+  ...storybook.configs['flat/recommended'],
   ...compat.config({
     extends: ['plugin:react-hooks/recommended'],
   }),
