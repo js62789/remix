@@ -6,7 +6,7 @@
     "build": "remix vite:build",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
-    "dev": "npm run dev:server && npm run dev:css",
+    "dev": "concurrently -k \"npm:dev:*\"",
     "dev:server": "remix vite:dev",
     "dev:css": "tcm --watch ./app",
     "clinic:doctor": "npm run build && npx clinic doctor --autocannon / --method GET -- node ./node_modules/.bin/remix-serve build/server/index.js",
@@ -40,7 +40,8 @@
     "concurrently": "^8.2.2",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",
-    "eslint-plugin-storybook": "^0.8.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint-plugin-storybook": "^0.11.2",
     "globals": "^15.3.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.5",
@@ -62,10 +63,5 @@
     "isbot": "^4.4.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
-  },
-  "eslintConfig": {
-    "extends": [
-      "plugin:storybook/recommended"
-    ]
   }
 }
