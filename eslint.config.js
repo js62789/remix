@@ -6,6 +6,7 @@ import js from '@eslint/js';
 import ts from 'typescript-eslint';
 import globals from 'globals';
 import { FlatCompat } from '@eslint/eslintrc';
+import reactYouMightNotNeedAnEffect from 'eslint-plugin-react-you-might-not-need-an-effect';
 
 const compat = new FlatCompat();
 
@@ -19,6 +20,7 @@ export default [
   ...compat.config({
     extends: ['plugin:react-hooks/recommended'],
   }),
+  reactYouMightNotNeedAnEffect.configs.recommended,
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
