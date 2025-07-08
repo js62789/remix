@@ -6,15 +6,10 @@ import {
   Scripts,
   ScrollRestoration,
   useRouteError,
-} from '@remix-run/react';
-import { cssBundleHref } from '@remix-run/css-bundle';
-import type { LinksFunction, MetaFunction } from '@remix-run/node';
+} from 'react-router';
+import type { MetaFunction } from 'react-router';
 import { type ReactNode } from 'react';
 import './root.css';
-
-export const links: LinksFunction = () => [
-  ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
-];
 
 export const meta: MetaFunction = () => ([
   {
@@ -53,7 +48,7 @@ export function ErrorBoundary() {
     return (
       <div>
         <h1>
-          {error.status} 
+          {error.status}
           {' '}
           {error.statusText}
         </h1>
