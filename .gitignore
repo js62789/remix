@@ -4,3 +4,7 @@ dist
 
 .env
 *storybook.log
+
+# React Router
+/.react-router/
+/build/
